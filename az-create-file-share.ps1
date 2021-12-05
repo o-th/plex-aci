@@ -3,6 +3,8 @@ $storageAccountName = "plexstorage$(Get-Random)"
 $region = "westus"
 $shareName = "plex-share"
 
+az group create --name $resourceGroupName --location westus
+
 $storAcct = New-AzStorageAccount `
     -ResourceGroupName $resourceGroupName `
     -Name $storageAccountName `
