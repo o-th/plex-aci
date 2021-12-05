@@ -32,7 +32,7 @@ properties:
     type: Public
     ports:
       - port: 32400
-    dnsNameLabel: plex8124
+    dnsNameLabel: <UniqueDNS>
   volumes:
   - name: config
     azureFile:
