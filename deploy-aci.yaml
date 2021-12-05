@@ -1,0 +1,48 @@
+apiVersion: '2019-12-01'
+location: westus
+name: plex-infra
+properties:
+  containers:
+  - name: plex-server
+    properties:
+      environmentVariables:
+      - name: 'PUID'
+        value: '1000'
+      - name: 'PGID'
+        value: '1000'
+      - name: 'VERSION'
+        value: 'docker'
+      - name: 'PLEX_CLAIM'
+        value: '<CLAIM CODE>'
+      image: lscr.io/linuxserver/plex
+      ports:
+      - port: 32400
+      resources:
+        requests:
+          cpu: 2.0
+          memoryInGB: 2
+      volumeMounts:
+      - mountPath: /config
+        name: config
+      - mountPath: /media
+        name: media
+  osType: Linux
+  restartPolicy: Always
+  ipAddress:
+    type: Public
+    ports:
+      - port: 32400
+    dnsNameLabel: plex8124
+  volumes:
+  - name: config
+    azureFile:
+      sharename: plex-share
+      storageAccountName: <StorageAccountName>
+      storageAccountKey: <StorageAccountKey>
+  - name: media
+    azureFile:
+      sharename: plex-share
+      storageAccountName: <StorageAccountName>
+      storageAccountKey: <StorageAccountKey>
+tags: {}
+type: Microsoft.ContainerInstance/containerGroups
