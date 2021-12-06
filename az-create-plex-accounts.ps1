@@ -1,7 +1,7 @@
 $resourceGroupName = "plex"
 $storageAccountName = "plexstorage$(Get-Random)"
-$region = "westus"
 $shareName = "plex-share"
+$region = "westus"
 
 az group create --name $resourceGroupName --location westus
 
