@@ -19,7 +19,7 @@ properties:
       - port: 32400
       resources:
         requests:
-          cpu: 2.0
+          cpu: 1.0
           memoryInGB: 2
       volumeMounts:
       - mountPath: /config
